@@ -48,10 +48,10 @@ var score = 0; // aantal behaalde punten
 var tekenVeld = function () {
   fill("red");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
-  fill("black");
-  line (10, 10, 10, 10);
+  
 };
 
+line(10, 10 ,10, 10);
 
 /**
  * Tekent de vijand
