@@ -51,7 +51,6 @@ var tekenVeld = function () {
   
 };
 
-line(10, 10 ,10, 10);
 
 /**
  * Tekent de vijand
