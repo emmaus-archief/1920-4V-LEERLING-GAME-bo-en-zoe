@@ -10,10 +10,12 @@
    */ 
   display:block;
   margin: auto;
+  margin-top: 20px;
 }
 
 html, body {
   /* verwijder marge tussen canvas en rand van window
    */ 
   margin: 0px;
+  background: rgb(243, 172, 172);
 }
