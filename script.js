@@ -51,7 +51,11 @@ var tekenVeld = function () {
   
 };
 
-
+var tekenPrijs = function () {
+  fill(255, 253, 163);
+  rect(20, 20, width - 2 * 20, height - 2 * 20);
+  
+};
 /**
  * Tekent de vijand
  * @param {number} x x-coördinaat
