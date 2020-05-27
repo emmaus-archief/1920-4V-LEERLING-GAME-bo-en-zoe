@@ -115,6 +115,10 @@ var beweegKogel = function() {
  */
 var beweegSpeler = function() {
     if (keyIsPressed === true) {
+        
+        if (key === " ") {  //checken op spatie
+
+        }
         if (keyCode === LEFT_ARROW) {
             if (spelerX < width - 20) {
                 spelerX = spelerX + 5;
