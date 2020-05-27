@@ -46,6 +46,10 @@ var score = 0; // aantal behaalde punten
  * Tekent het speelveld
  */
 var tekenVeld = function () {
+  // Kleur de achtergrond blauw, zodat je het kunt zien
+  background('black');
+
+  // dit is het speelveld
   fill(189, 214, 255);
   rect(20, 20, width - 2 * 20, height - 2 * 20);
   
@@ -85,7 +89,7 @@ var tekenKogel = function(x, y) {
  */
 var tekenSpeler = function(x, y) {
   fill("white");
-  ellipse(mouseX, mouseY, 50, 50);
+  ellipse(spelerX, spelerY, 50, 50);
 };
 
 
@@ -110,7 +114,29 @@ var beweegKogel = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-
+    if (keyIsPressed === true) {
+        if (keyCode === LEFT_ARROW) {
+            if (spelerX < width - 20) {
+                spelerX = spelerX + 5;
+            }
+            
+        }
+        if (keyCode === RIGHT_ARROW) {
+            if (spelerX > 20) {
+                spelerX = spelerX - 5;
+            }
+        }
+        if (keyCode === UP_ARROW) {
+            // gebruikt height voor de hoogte van het canvas
+            spelerY = spelerY + 5;
+        }
+        if (keyCode === DOWN_ARROW) {
+            if (spelerY > 20) {
+                spelerY = spelerY - 5;
+            }
+            
+        }
+    }
 };
 
 
@@ -153,9 +179,6 @@ var checkGameOver = function() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 620);
-
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('black');
 }
 
 
