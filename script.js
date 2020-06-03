@@ -41,8 +41,8 @@ var score = 0; // aantal behaalde punten
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
 
-var randomX = random(0, 200);
-var randomY = random(0, 200);
+var randomX = 0;
+var randomY = 0;
 /**
  * Tekent het speelveld
  */
@@ -186,6 +186,8 @@ var checkGameOver = function() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 620);
+  randomX = random(0,200);
+  randomY = random(0,200);
 }
 
 
