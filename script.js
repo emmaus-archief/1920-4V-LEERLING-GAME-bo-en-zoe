@@ -41,7 +41,8 @@ var score = 0; // aantal behaalde punten
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
 
-
+var randomX = random(0, 200);
+var randomY = random(0, 200);
 /**
  * Tekent het speelveld
  */
@@ -66,7 +67,8 @@ var tekenPrijs = function () {
  * @param {number} y y-coördinaat
  */
 var tekenVijand = function(x, y) {
-    
+    fill(255, 255, 255);
+    ellipse(randomX, randomY, 20, 20);
 
 };
 
