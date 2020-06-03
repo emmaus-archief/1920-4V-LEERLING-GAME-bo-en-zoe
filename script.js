@@ -131,8 +131,9 @@ var beweegSpeler = function() {
             }
         }
         if (keyCode === UP_ARROW) {
-            // gebruikt height voor de hoogte van het canvas
+            if (spelerY < - 20) {// gebruikt height voor de hoogte van het canvas
             spelerY = spelerY + 5;
+            }
         }
         if (keyCode === DOWN_ARROW) {
             if (spelerY > 20) {
