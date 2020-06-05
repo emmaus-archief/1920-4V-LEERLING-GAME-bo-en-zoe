@@ -33,8 +33,13 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
+//plaatjes 
 
+var imgA=0;
 
+function preload () {
+    imgA = loadImage ();
+}
 
 
 /* ********************************************* */
