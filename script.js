@@ -25,8 +25,8 @@ var spelStatus = SPELEN;
 var spelerX = 200; // x-positie van speler
 var spelerY = 100; // y-positie van speler
 
-var kogelX = 0;    // x-positie van kogel
-var kogelY = 0;    // y-positie van kogel
+var kogelX = randomX;    // x-positie van kogel
+var kogelY = randomY;    // y-positie van kogel
 
 var vijandX = 0;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
@@ -43,16 +43,7 @@ var score = 0; // aantal behaalde punten
 
 var randomX = 0;
 var randomY = 0;
-var randomX2 = 0;
-var randomY2= 0;
-var randomX3 = 0;
-var randomY3 = 0;
-var randomX4 = 0;
-var randomY4 = 0;
-var randomX5 = 0;
-var randomY5 = 0;
-var randomX6 = 0;
-var randomY6 = 0;
+
 /**
  * Tekent het speelveld
  */
@@ -88,33 +79,15 @@ var tekenVijand = function(x,y){
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenKogel = function(x, y) {
-    var kogelX = randomX;
-    var kogelY = randomY;
+var tekenKogel = for(var i = 0, i < 10, i++) {
     fill(255, 255, 255);
-    ellipse(kogelX, kogelY, 40, 40);
-};
+    ellipse(randomX, randomY, 40, 40);
+ };
+//var tekenKogel = function(x,y) {
+   //fill(255, 255, 255);
+   //ellipse(randomX, randomY, 40, 40);
+ //};
 
-var tekenKogel2 = function(x, y) {
-    fill(255, 255, 255);
-    ellipse(randomX2, randomY2, 20, 20);
-};
-var tekenKogel3 = function(x, y) {
-    fill(255, 255, 255);
-    ellipse(randomX3, randomY3, 20, 20);
-};
-var tekenKogel4 = function(x, y) {
-    fill(255, 255, 255);
-    ellipse(randomX4, randomY4, 20, 20);
-};
-var tekenKogel5 = function(x, y) {
-    fill(255, 255, 255);
-    ellipse(randomX5, randomY5, 20, 20);
-};
-var tekenKogel6 = function(x, y) {
-    fill(255, 255, 255);
-    ellipse(randomX6, randomY6, 20, 20);
-};
 /**
  * Tekent de speler
  * @param {number} x x-coördinaat
@@ -201,18 +174,8 @@ var checkGameOver = function() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 620);
-  randomX = random(30,width - 100);
-  randomY = random(30,height - 100);
-    randomX2 = random(30,width - 100);
-  randomY2 = random(30,height);
-    randomX3 = random(30,width - 100);
-  randomY3 = random(30,height - 100);
-    randomX4 = random(30,width) - 100;
-  randomY4 = random(30,height);
-    randomX5 = random(30,width);
-  randomY5 = random(30,height);
-      randomX6 = random(30,width);
-  randomY6 = random(30,height);
+  randomX = random(30, width - 30);
+  randomY = random(30, height - 30);
 
 }
 
@@ -232,11 +195,6 @@ function draw() {
       tekenVeld();
       tekenVijand(vijandX, vijandY);
       tekenKogel(kogelX, kogelY);
-      tekenKogel2(kogelX, kogelY);
-      tekenKogel3(kogelX, kogelY);
-      tekenKogel4(kogelX, kogelY);
-      tekenKogel5(kogelX, kogelY);
-      tekenKogel6(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver()) {
