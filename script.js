@@ -181,7 +181,12 @@ var beweegSpeler = function() {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function() {
-    
+    // botsing met eerste balletje
+    // als spelerX vlakbij randomX && spelerY vlakbij randomY
+    if ( abs(spelerX - randomX) <10 && // afstand randomX en spelerX is kleiner dan 10
+        abs(spelerY - randomY) <10) {
+        return true;
+    }
   return false;
 };
 
