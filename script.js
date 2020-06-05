@@ -33,13 +33,8 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
-//plaatjes 
 
-var imgA=0;
 
-function preload () {
-    imgA = loadImage ();
-}
 
 
 /* ********************************************* */
@@ -94,8 +89,10 @@ var tekenVijand = function(x,y){
  * @param {number} y y-coördinaat
  */
 var tekenKogel = function(x, y) {
+    var kogelX = randomX;
+    var kogelY = randomY;
     fill(255, 255, 255);
-    ellipse(randomX, randomY, 40, 40);
+    ellipse(kogelX, kogelY, 40, 40);
 };
 
 var tekenKogel2 = function(x, y) {
