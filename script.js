@@ -215,18 +215,18 @@ var checkGameOver = function() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 620);
-  randomX = random(0,width - 100);
-  randomY = random(0,height - 100);
-    randomX2 = random(0,width - 100);
-  randomY2 = random(0,height);
-    randomX3 = random(0,width - 100);
-  randomY3 = random(0,height - 100);
-    randomX4 = random(0,width) - 100;
-  randomY4 = random(0,height);
-    randomX5 = random(0,width);
-  randomY5 = random(0,height);
-      randomX6 = random(0,width);
-  randomY6 = random(0,height);
+  randomX = random(30,width - 100);
+  randomY = random(30,height - 100);
+    randomX2 = random(30,width - 100);
+  randomY2 = random(30,height);
+    randomX3 = random(30,width - 100);
+  randomY3 = random(30,height - 100);
+    randomX4 = random(30,width) - 100;
+  randomY4 = random(30,height);
+    randomX5 = random(30,width);
+  randomY5 = random(30,height);
+      randomX6 = random(30,width);
+  randomY6 = random(30,height);
 
 }
 
