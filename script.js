@@ -182,32 +182,16 @@ var beweegSpeler = function() {
 
 
 /**
- * Zoekt uit of de vijand is geraakt
- * @returns {boolean} true als vijand is geraakt
- */
-var checkVijandGeraakt = function() {
-
-  return false;
-};
-
-
-/**
- * Zoekt uit of de speler is geraakt
- * bijvoorbeeld door botsing met vijand
- * @returns {boolean} true als speler is geraakt
- */
-var checkSpelerGeraakt = function() {
-    
-  return false;
-};
-
-
-/**
  * Zoekt uit of het spel is afgelopen
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function() {
-    
+    // botsing met eerste balletje
+    // als spelerX vlakbij randomX && spelerY vlakbij randomY
+    if ( abs(spelerX - randomX) <10 && // afstand randomX en spelerX is kleiner dan 10
+        abs(spelerY - randomY) <10) {
+        return true;
+    }
   return false;
 };
 
@@ -220,13 +204,13 @@ var checkGameOver = function() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 620);
-  randomX = random(0,width);
-  randomY = random(0,height);
-    randomX2 = random(0,width);
+  randomX = random(0,width - 100);
+  randomY = random(0,height - 100);
+    randomX2 = random(0,width - 100);
   randomY2 = random(0,height);
-    randomX3 = random(0,width);
-  randomY3 = random(0,height);
-    randomX4 = random(0,width);
+    randomX3 = random(0,width - 100);
+  randomY3 = random(0,height - 100);
+    randomX4 = random(0,width) - 100;
   randomY4 = random(0,height);
     randomX5 = random(0,width);
   randomY5 = random(0,height);
@@ -247,16 +231,6 @@ function draw() {
       beweegVijand();
       beweegKogel();
       beweegSpeler();
-      
-      if (checkVijandGeraakt()) {
-        // punten erbij
-        // nieuwe vijand maken
-      }
-      
-      if (checkSpelerGeraakt()) {
-        // leven eraf of gezondheid verlagen
-        // eventueel: nieuwe speler maken
-      }
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
