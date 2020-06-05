@@ -90,7 +90,7 @@ var tekenVijand = function(x,y){
  */
 var tekenKogel = function(x, y) {
     fill(255, 255, 255);
-    ellipse(randomX, randomY, 20, 20);
+    ellipse(randomX, randomY, 40, 40);
 };
 
 var tekenKogel2 = function(x, y) {
@@ -183,8 +183,8 @@ var beweegSpeler = function() {
 var checkGameOver = function() {
     // botsing met eerste balletje
     // als spelerX vlakbij randomX && spelerY vlakbij randomY
-    if ( abs(spelerX - randomX) <10 && // afstand randomX en spelerX is kleiner dan 10
-        abs(spelerY - randomY) <10) {
+    if ( abs(spelerX - randomX) <40 && // afstand randomX en spelerX is kleiner dan 10
+        abs(spelerY - randomY) <40) {
         return true;
     }
   return false;
