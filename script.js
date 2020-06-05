@@ -79,9 +79,11 @@ var tekenVijand = function(x,y){
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenKogel = for(var i = 0, i < 10, i++) {
+var tekenKogel = function(x,y) {
+    for(var i = 0, i < 10, i++){
     fill(255, 255, 255);
     ellipse(randomX, randomY, 40, 40);
+    }
  };
 //var tekenKogel = function(x,y) {
    //fill(255, 255, 255);
