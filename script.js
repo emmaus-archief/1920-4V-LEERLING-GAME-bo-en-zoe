@@ -41,8 +41,8 @@ var score = 0; // aantal behaalde punten
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
 
-var randomX = 0;
-var randomY = 0;
+var randomX = [0,0,0,0,0,0];
+var randomY = [0,0,0,0,0,0];
 
 /**
  * Tekent het speelveld
@@ -76,13 +76,12 @@ var tekenVijand = function(x,y){
 
 /**
  * Tekent de kogel of de bal
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
+ * 
  */
-var tekenKogel = function(x,y) {
-    for(var i = 0, i < 10, i++){
+var tekenAlleKogels = function() {
+    for(var i = 0; i < randomX.length; i++){
     fill(255, 255, 255);
-    ellipse(randomX, randomY, 40, 40);
+    ellipse(randomX[i], randomY[i], 40, 40);
     }
  };
 //var tekenKogel = function(x,y) {
@@ -160,8 +159,8 @@ var beweegSpeler = function() {
 var checkGameOver = function() {
     // botsing met eerste balletje
     // als spelerX vlakbij randomX && spelerY vlakbij randomY
-    if ( abs(spelerX - randomX) <40 && // afstand randomX en spelerX is kleiner dan 10
-        abs(spelerY - randomY) <40) {
+    if ( abs(spelerX - randomX[0]) <40 && // afstand randomX en spelerX is kleiner dan 10
+        abs(spelerY - randomY[0]) <40) {
         return true;
     }
   return false;
@@ -176,8 +175,10 @@ var checkGameOver = function() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 620);
-  randomX = random(30, width - 30);
-  randomY = random(30, height - 30);
+  for (var i=0; i<randomX.length;i++) {
+     randomX[i] = random(30, width - 30);
+     randomY[i] = random(30, height - 30);
+   }
 
 }
 
@@ -196,7 +197,7 @@ function draw() {
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
-      tekenKogel(kogelX, kogelY);
+      tekenAlleKogels();
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver()) {
