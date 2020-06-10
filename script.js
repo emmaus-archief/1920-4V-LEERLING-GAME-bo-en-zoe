@@ -33,6 +33,7 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
+var imgA = 0; // plaatje
 
 
 
@@ -166,6 +167,9 @@ var checkGameOver = function() {
   return false;
 };
 
+function preload() {
+    imgA=loadImage("icon-512x512.png");
+}
 
 /**
  * setup
@@ -203,6 +207,7 @@ function draw() {
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
       }
+      image(imgA,200,200,100,100);
       break;
   }
 }
