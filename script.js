@@ -67,11 +67,7 @@ var tekenPrijs = function () {
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenVijand = function(x,y){
 
-
-
-};
 
 
 /**
@@ -98,22 +94,6 @@ var tekenKogel = function(x,y) {
 var tekenSpeler = function(x, y) {
   fill("white");
   ellipse(spelerX, spelerY, 50, 50);
-};
-
-
-/**
- * Updatet globale variabelen met positie van vijand of tegenspeler
- */
-var beweegVijand = function() {
-    
-};
-
-
-/**
- * Updatet globale variabelen met positie van kogel of bal
- */
-var beweegKogel = function() {
-
 };
 
 
@@ -196,7 +176,7 @@ function draw() {
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
-      tekenKogel(kogelX, kogelY);
+      tekenKogel(randomX, randomY);
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver()) {
