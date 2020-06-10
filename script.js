@@ -175,17 +175,10 @@ function setup() {
 function draw() {
   switch (spelStatus) {
     case SPELEN:
-      beweegVijand();
-      beweegKogel();
       beweegSpeler();
 
       tekenVeld();
-      tekenVijand(vijandX, vijandY);
-<<<<<<< HEAD
-      tekenKogel(randomX, randomY);
-=======
       tekenAlleKogels();
->>>>>>> 3710358f028ca710d8cc2d2be3d271418cf268f8
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver()) {
