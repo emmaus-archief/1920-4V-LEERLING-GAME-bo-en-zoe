@@ -154,7 +154,7 @@ function preload() {
 
 function draw() {
   image(imgA, 0, 0, 800, 450);
-
+}
 /**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
