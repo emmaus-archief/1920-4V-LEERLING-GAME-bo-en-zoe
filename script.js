@@ -149,7 +149,7 @@ var checkGameOver = function() {
 var imgA=0;
 
 function preload() {
-    imgA=loadImage("a rainbow.png");
+    imgA=loadImage("a.rainbow.png");
 }
 
 function draw() {
