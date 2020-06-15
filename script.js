@@ -146,10 +146,14 @@ var checkGameOver = function() {
     }
   return false;
 };
+var imgA=0;
 
 function preload() {
-    imgA=loadImage("icon-512x512.png");
+    imgA=loadImage("a rainbow.png");
 }
+
+function draw() {
+  image(imgA, 0, 0, 800, 450);
 
 /**
  * setup
