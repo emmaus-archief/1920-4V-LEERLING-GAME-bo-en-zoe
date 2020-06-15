@@ -33,7 +33,6 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
-var imgA = 0; // plaatje
 
 
 
@@ -153,7 +152,7 @@ function preload() {
 }
 
 function draw() {
-  image(imgA, 0, 0, 800, 450);
+  image(imgA, 10, 50, 100, 100);
 }
 /**
  * setup
