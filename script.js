@@ -22,6 +22,10 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
+var imgRainbow;
+var imgSun;
+var imgCloud;
+
 var spelerX = 200; // x-positie van speler
 var spelerY = 100; // y-positie van speler
 
@@ -33,6 +37,8 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
+var randomX = [0,0,0,0,0,0,0,0,0,0];
+var randomY = [0,0,0,0,0,0,0,0,0,0];
 
 
 
@@ -41,8 +47,14 @@ var score = 0; // aantal behaalde punten
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
 
-var randomX = [0,0,0,0,0,0];
-var randomY = [0,0,0,0,0,0];
+
+
+function preload() {
+  imgRainbow = loadImage("rainbow.png");
+  imgSun = loadImage("sun.png");
+  imgCloud = loadImage("cloud.png");
+}
+
 
 /**
  * Tekent het speelveld
@@ -60,14 +72,19 @@ var tekenVeld = function () {
 var tekenPrijs = function () {
   fill(0, 0, 0);
   rect(400, 400, width - 2 * 20, height - 2 * 20);
-  
 };
+
+
 /**
- * Tekent de vijand
+ * Tekent de prijs
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-
+//var tekenPrijs = function() {
+//    for(var i = 0; i < randomX.length; i++){
+//      image(imgRainbow, randomX[i], randomY[i], 80, 80);
+//    }
+// };
 
 
 /**
@@ -76,8 +93,7 @@ var tekenPrijs = function () {
  */
 var tekenAlleKogels = function() {
     for(var i = 0; i < randomX.length; i++){
-    fill(255, 255, 255);
-    ellipse(randomX[i], randomY[i], 40, 40);
+      image(imgCloud, randomX[i], randomY[i], 80, 80);
     }
  };
 //var tekenKogel = function(x,y) {
@@ -91,8 +107,7 @@ var tekenAlleKogels = function() {
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
-  fill("white");
-  ellipse(spelerX, spelerY, 50, 50);
+  image(imgSun, x, y, 120, 120);
 };
 
 
@@ -139,20 +154,19 @@ var beweegSpeler = function() {
 var checkGameOver = function() {
     // botsing met eerste balletje
     // als spelerX vlakbij randomX && spelerY vlakbij randomY
-    if ( abs(spelerX - randomX[0]) <40 && // afstand randomX en spelerX is kleiner dan 10
-        abs(spelerY - randomY[0]) <40) {
-        return true;
+    for (var i=0; i<randomX.length;i++) {
+        if (abs(spelerX - randomX[i]) < 60 &&
+            abs(spelerY - randomY[i]) < 60) {
+               return true;
+        }
     }
-  return false;
-};
-var imgA=0;
 
-function preload() {
-    imgA=loadImage("a.rainbow.png");
-}
+    return false;
+};
+
 
 function draw() {
-  image(imgA, 10, 50, 100, 100);
+  image(imgRainbow, 50, 50, 100, 120);
 }
 /**
  * setup
@@ -162,6 +176,9 @@ function draw() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 620);
+
+  imageMode(CENTER);
+
   for (var i=0; i<randomX.length;i++) {
      randomX[i] = random(30, width - 30);
      randomY[i] = random(30, height - 30);
@@ -179,15 +196,18 @@ function draw() {
   switch (spelStatus) {
     case SPELEN:
       beweegSpeler();
-
       tekenVeld();
       tekenAlleKogels();
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver()) {
+        //console.log("Game over, jammer joh");
         spelStatus = GAMEOVER;
       }
-      image(imgA,200,200,100,100);
+      
       break;
+      case GAMEOVER:
+          // hier komt het GAMEOVER scherm
+          break;
   }
 }
