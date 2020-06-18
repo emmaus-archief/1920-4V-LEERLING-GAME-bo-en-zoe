@@ -151,19 +151,31 @@ var beweegSpeler = function() {
  * Zoekt uit of het spel is afgelopen
  * @returns {boolean} true als het spel is afgelopen
  */
+
 var checkGameOver = function() {
     // botsing met eerste balletje
     // als spelerX vlakbij randomX && spelerY vlakbij randomY
-    for (var i=0; i<randomX.length;i++) {
-        if (abs(spelerX - randomX[i]) < 60 &&
-            abs(spelerY - randomY[i]) < 60) {
-               return true;
+    var gameOver = false;
+    for (var i = 0; i < randomX.length; i++) {
+          
+        if (abs(spelerX - randomX[i]) < 60 && abs(spelerY - randomY[i]) < 60) {
+            gameOver = true;
         }
+        
+        return gameOver;
     }
-
-    return false;
 };
 
+/* tekent het vierkant met de tekst game over */
+var eindScherm = function() {
+    fill(255, 255, 255);
+    rect(0, 0, width, height);
+    stroke(0);
+    strokeWeight(8);
+    fill(255, 0, 0);
+    textSize(100);
+    text("Game Over", width / 2 - 256, height / 2 - 100);
+};
 
 function draw() {
   image(imgRainbow, 50, 50, 100, 120);
@@ -200,14 +212,16 @@ function draw() {
       tekenAlleKogels();
       tekenSpeler(spelerX, spelerY);
 
-      if (checkGameOver()) {
+      if (checkGameOver() === true) {
         //console.log("Game over, jammer joh");
         spelStatus = GAMEOVER;
       }
-      
-      break;
+    break;
+
       case GAMEOVER:
-          // hier komt het GAMEOVER scherm
-          break;
+
+      eindScherm();
+    
+    break;
   }
 }
