@@ -20,6 +20,7 @@
 const START = 0;
 const SPELEN = 1;
 const GAMEOVER = 2;
+const GAMEWON = 3;
 var spelStatus = START;
 
 var imgRainbow;
@@ -28,6 +29,9 @@ var imgCloud;
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 100; // y-positie van speler
+var prijsX = 1150;
+var prijsY = 490;
+var randomSpeed = 2;
 
 var kogelX = randomX;    // x-positie van kogel
 var kogelY = randomY;    // y-positie van kogel
@@ -39,6 +43,7 @@ var score = 0; // aantal behaalde punten
 
 var randomX = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var randomY = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
 
 
 
@@ -70,7 +75,7 @@ var tekenVeld = function () {
 };
 
 var tekenPrijs = function () {
-  image(imgRainbow, 1150, 490, 120, 120);
+  image(imgRainbow, prijsX, prijsY, 120, 120);
 }
 
 
@@ -115,23 +120,23 @@ var beweegSpeler = function() {
         }
         if (keyCode === LEFT_ARROW) {
             if (spelerX < width - 20) {
-                spelerX = spelerX + 5;
+                spelerX = spelerX + randomSpeed;
             }
             
         }
         if (keyCode === RIGHT_ARROW) {
             if (spelerX > 20) {
-                spelerX = spelerX - 5;
+                spelerX = spelerX - randomSpeed;
             }
         }
         if (keyCode === UP_ARROW) {
             if (spelerY < height - 20) {// gebruikt height voor de hoogte van het canvas
-            spelerY = spelerY + 5;
+            spelerY = spelerY + randomSpeed;
             }
         }
         if (keyCode === DOWN_ARROW) {
             if (spelerY > 20) {
-                spelerY = spelerY - 5;
+                spelerY = spelerY - randomSpeed;
             }
             
         }
@@ -158,7 +163,18 @@ var checkGameOver = function() {
     return gameOver;
     
 };
+var checkGameWon = function() {
+   var gameWon = false;
+    for (var i = 0; i < randomX.length; i++) {
+        
+          
+        if (abs(spelerX - prijsX) < 60 && abs(spelerY - prijsY) < 60) {
+            gameWon = true;
+        }
+    }
+    return gameWon;
 
+}
 /* tekent het vierkant met de tekst game over */
 var eindScherm = function() {
     fill(255, 255, 255);
@@ -171,6 +187,18 @@ var eindScherm = function() {
     text("klik spatie om te herstartten" , width / 9 - 100, height / 2 - 20);
 };
 
+var winScherm = function() {
+    fill(255, 255, 255);
+    rect(0, 0, width, height);
+    stroke(0);
+    strokeWeight(8);
+    fill(189, 214, 255);
+    textSize(100);
+    text("Game Gewonnen!", width / 2.5 - 250, height / 2 - 100);
+    text("klik spatie om te herstartten" , width / 9 - 100, height / 2 - 20);
+};
+
+
 var resetGame = function () {
     spelerX = 100;
     spelerY = 100;
@@ -181,9 +209,7 @@ var resetGame = function () {
    }
 }
 
-function draw() {
-  image(imgRainbow, 50, 50, 100, 120);
-}
+
 /**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
@@ -220,9 +246,21 @@ function draw() {
         //console.log("Game over, jammer joh");
         spelStatus = GAMEOVER;
       }
+            if (checkGameWon() === true) {
+        //console.log("Game won!");
+        spelStatus = GAMEWON;
+      }
+    break;
+    case GAMEWON:
+
+      winScherm();
+      if (keyIsDown(32)) { // spatie
+         randomSpeed = randomSpeed + 1.5;
+         spelStatus = START;
+      }
     break;
 
-      case GAMEOVER:
+    case GAMEOVER:
 
       eindScherm();
       if (keyIsDown(32)) { // spatie
