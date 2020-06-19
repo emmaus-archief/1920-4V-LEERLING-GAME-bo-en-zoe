@@ -37,8 +37,8 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
-var randomX = [0,0,0,0,0,0,0,0,0,0];
-var randomY = [0,0,0,0,0,0,0,0,0,0];
+var randomX = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var randomY = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 
 
@@ -70,9 +70,8 @@ var tekenVeld = function () {
 };
 
 var tekenPrijs = function () {
-  fill(0, 0, 0);
-  rect(400, 400, width - 2 * 20, height - 2 * 20);
-};
+  image(imgRainbow, x, y, 120, 120);
+}
 
 
 /**
@@ -80,11 +79,7 @@ var tekenPrijs = function () {
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-//var tekenPrijs = function() {
-//    for(var i = 0; i < randomX.length; i++){
-//      image(imgRainbow, randomX[i], randomY[i], 80, 80);
-//    }
-// };
+
 
 
 /**
@@ -96,10 +91,7 @@ var tekenAlleKogels = function() {
       image(imgCloud, randomX[i], randomY[i], 80, 80);
     }
  };
-//var tekenKogel = function(x,y) {
-   //fill(255, 255, 255);
-   //ellipse(randomX, randomY, 40, 40);
- //};
+
 
 /**
  * Tekent de speler
@@ -195,8 +187,8 @@ function setup() {
   imageMode(CENTER);
 
   for (var i=0; i<randomX.length;i++) {
-     randomX[i] = random(30, width - 30);
-     randomY[i] = random(30, height - 30);
+     randomX[i] = random(60, width - 60);
+     randomY[i] = random(60, height - 60);
    }
 
 }
