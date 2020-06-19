@@ -70,7 +70,7 @@ var tekenVeld = function () {
 };
 
 var tekenPrijs = function () {
-  image(imgRainbow, x, y, 120, 120);
+  image(imgRainbow, 1150, 490, 120, 120);
 }
 
 
@@ -154,9 +154,9 @@ var checkGameOver = function() {
         if (abs(spelerX - randomX[i]) < 60 && abs(spelerY - randomY[i]) < 60) {
             gameOver = true;
         }
-        
-        return gameOver;
     }
+    return gameOver;
+    
 };
 
 /* tekent het vierkant met de tekst game over */
@@ -213,6 +213,7 @@ function draw() {
       beweegSpeler();
       tekenVeld();
       tekenAlleKogels();
+      tekenPrijs();
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver() === true) {
