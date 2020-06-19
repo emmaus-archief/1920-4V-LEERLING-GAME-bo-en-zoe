@@ -177,23 +177,19 @@ var checkGameWon = function() {
 
 }
 /* tekent het vierkant met de tekst game over */
-var eindScherm = function() {
-    fill(255, 255, 255);
-    rect(0, 0, width, height);
+var eindScherm = function() { 
     stroke(0);
     strokeWeight(8);
-    fill(189, 214, 255);
+    fill(243, 172, 172);
     textSize(100);
     text("Game Over", width / 2 - 256, height / 2 - 100);
     text("klik spatie om te herstartten" , width / 9 - 100, height / 2 - 20);
 };
 
 var winScherm = function() {
-    fill(255, 255, 255);
-    rect(0, 0, width, height);
     stroke(0);
     strokeWeight(8);
-    fill(189, 214, 255);
+    fill(243, 172, 172);
     textSize(100);
     text("Game Gewonnen!", width / 2.5 - 250, height / 2 - 100);
     text("klik spatie om te herstartten" , width / 9 - 100, height / 2 - 20);
