@@ -168,6 +168,7 @@ var eindScherm = function() {
     fill(189, 214, 255);
     textSize(100);
     text("Game Over", width / 2 - 256, height / 2 - 100);
+    text("klik spatie om te herstartten" , width / 9 - 100, height / 2 - 20);
 };
 
 
