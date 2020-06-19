@@ -35,6 +35,7 @@ var randomSpeed = 2;
 
 var kogelX = randomX;    // x-positie van kogel
 var kogelY = randomY;    // y-positie van kogel
+var groteRainbow = 120;
 
 var vijandX = 0;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
@@ -75,7 +76,7 @@ var tekenVeld = function () {
 };
 
 var tekenPrijs = function () {
-  image(imgRainbow, prijsX, prijsY, 120, 120);
+  image(imgRainbow, prijsX, prijsY, groteRainbow, groteRainbow);
 }
 
 
@@ -255,6 +256,7 @@ function draw() {
 
       winScherm();
       if (keyIsDown(32)) { // spatie
+         groteRainbow = groteRainbow + 5;
          randomSpeed = randomSpeed + 1.5;
          spelStatus = START;
       }
