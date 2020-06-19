@@ -157,6 +157,7 @@ var checkGameOver = function() {
     // als spelerX vlakbij randomX && spelerY vlakbij randomY
     var gameOver = false;
     for (var i = 0; i < randomX.length; i++) {
+        
           
         if (abs(spelerX - randomX[i]) < 60 && abs(spelerY - randomY[i]) < 60) {
             gameOver = true;
@@ -172,10 +173,12 @@ var eindScherm = function() {
     rect(0, 0, width, height);
     stroke(0);
     strokeWeight(8);
-    fill(255, 0, 0);
+    fill(189, 214, 255);
     textSize(100);
     text("Game Over", width / 2 - 256, height / 2 - 100);
 };
+
+
 
 function draw() {
   image(imgRainbow, 50, 50, 100, 120);
