@@ -252,7 +252,6 @@ function draw() {
 
       winScherm();
       if (keyIsDown(32)) { // spatie
-         groteRainbow = groteRainbow + 5;
          randomSpeed = randomSpeed + 1.5;
          spelStatus = START;
       }
