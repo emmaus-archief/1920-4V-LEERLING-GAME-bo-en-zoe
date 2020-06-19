@@ -17,10 +17,10 @@
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
 
-const UITLEG = 0;
+const START = 0;
 const SPELEN = 1;
 const GAMEOVER = 2;
-var spelStatus = SPELEN;
+var spelStatus = START;
 
 var imgRainbow;
 var imgSun;
@@ -171,7 +171,15 @@ var eindScherm = function() {
     text("klik spatie om te herstartten" , width / 9 - 100, height / 2 - 20);
 };
 
+var resetGame = function () {
+    spelerX = 100;
+    spelerY = 100;
 
+    for (var i=0; i<randomX.length;i++) {
+     randomX[i] = random(60, width - 60);
+     randomY[i] = random(60, height - 60);
+   }
+}
 
 function draw() {
   image(imgRainbow, 50, 50, 100, 120);
@@ -187,11 +195,6 @@ function setup() {
 
   imageMode(CENTER);
 
-  for (var i=0; i<randomX.length;i++) {
-     randomX[i] = random(60, width - 60);
-     randomY[i] = random(60, height - 60);
-   }
-
 }
 
 
@@ -202,6 +205,10 @@ function setup() {
  */
 function draw() {
   switch (spelStatus) {
+    case START:
+        resetGame();
+        spelStatus = SPELEN;
+    break;
     case SPELEN:
       beweegSpeler();
       tekenVeld();
@@ -217,6 +224,9 @@ function draw() {
       case GAMEOVER:
 
       eindScherm();
+      if (keyIsDown(32)) { // spatie
+         spelStatus = START;
+      }
     
     break;
   }
